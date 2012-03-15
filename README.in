@@ -1,0 +1,33 @@
+<%
+  require File.dirname(__FILE__) + "/lib/file_sandbox"
+  def show_example(name)
+    lines = File.read(File.dirname(__FILE__) + "/examples/#{name}_example.rb").split("\n")
+    lines.shift
+    lines.join("\n  ")
+  end
+%>= Project: File Sandbox v<%= FileSandbox::VERSION %>
+
+== Description
+
+File sandbox creates a space for your tests to safely hit the file system. It also makes it easier for them to do so.  By cleaning up after them.
+
+== Usage
+
+in rspec :
+
+  <%= show_example("rspec") %>
+
+in test unit :
+
+  <%= show_example("test_unit") %>
+  
+
+== Contact
+
+Author::     Jeremy Stell-Smith
+Email::      jeremystellsmith@gmail.com
+License::    LGPL License
+
+== Home Page
+
+http://onemanswalk.com
