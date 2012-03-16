@@ -1,9 +1,10 @@
-require 'rubygems'
 require 'rake/clean'
 require 'rake/testtask'
-require 'spec/rake/spectask'
+require 'rspec/core/rake_task'
 require 'hoe'
-require './lib/file_sandbox.rb'
+
+$LOAD_PATH.unshift File.dirname(__FILE__) + "/lib"
+require 'file_sandbox'
 
 desc "Default Task"
 task :default => [:clean, :test]
@@ -11,15 +12,15 @@ task :default => [:clean, :test]
 desc "Run all tests"
 task :test => [:unit, :spec]
 
-Spec::Rake::SpecTask.new(:spec) do |t|
-  t.spec_files = FileList['examples/*_example.rb']
+desc "Run specs"
+RSpec::Core::RakeTask.new do |t|
+  t.pattern = "./examples/*.rb"
 end
 
 Rake::TestTask.new(:unit) do |t|
   t.test_files = FileList['test/**/*test.rb']
   t.verbose = false
 end
-
 
 Hoe.new('file_sandbox', FileSandbox::VERSION) do |p|
   p.rubyforge_name = 'filesandbox'
