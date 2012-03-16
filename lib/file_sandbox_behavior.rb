@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/file_sandbox'
+require 'file_sandbox'
 
 module FileSandbox
   def self.included(spec)
