@@ -13,6 +13,7 @@ class FileSandboxTest < Test::Unit::TestCase
   end
 
   def test_sandbox_cleans_up_file
+    name = nil
     in_sandbox do |sandbox|
       name = sandbox.root + "/a.txt"
 
